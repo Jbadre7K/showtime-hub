@@ -12,6 +12,8 @@ import {
   LogOut,
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import ChangePasswordModal from "@/components/modals/ChangePasswordModal";
+import ConfirmActionModal from "@/components/modals/ConfirmActionModal";
 
 const SettingsPage = () => {
   const { toast } = useToast();
@@ -23,12 +25,33 @@ const SettingsPage = () => {
     twoFactor: false,
   });
 
+  const [passwordModalOpen, setPasswordModalOpen] = useState(false);
+  const [logoutAllModalOpen, setLogoutAllModalOpen] = useState(false);
+  const [deleteAccountModalOpen, setDeleteAccountModalOpen] = useState(false);
+
   const handleToggle = (key: keyof typeof settings) => {
     setSettings((prev) => ({ ...prev, [key]: !prev[key] }));
     toast({
       title: "Paramètre mis à jour",
       description: "Vos préférences ont été enregistrées.",
     });
+  };
+
+  const handleLogoutAll = () => {
+    toast({
+      title: "Déconnexion",
+      description: "Vous avez été déconnecté de tous les appareils.",
+    });
+    setLogoutAllModalOpen(false);
+  };
+
+  const handleDeleteAccount = () => {
+    toast({
+      title: "Compte supprimé",
+      description: "Votre compte a été supprimé définitivement.",
+      variant: "destructive",
+    });
+    setDeleteAccountModalOpen(false);
   };
 
   return (
@@ -142,7 +165,11 @@ const SettingsPage = () => {
                   onCheckedChange={() => handleToggle("twoFactor")}
                 />
               </div>
-              <Button variant="outline" className="w-full">
+              <Button 
+                variant="outline" 
+                className="w-full"
+                onClick={() => setPasswordModalOpen(true)}
+              >
                 Changer le mot de passe
               </Button>
             </div>
@@ -158,6 +185,7 @@ const SettingsPage = () => {
               <Button
                 variant="outline"
                 className="w-full justify-start text-foreground hover:text-destructive hover:border-destructive"
+                onClick={() => setLogoutAllModalOpen(true)}
               >
                 <LogOut className="w-4 h-4 mr-2" />
                 Se déconnecter de tous les appareils
@@ -165,6 +193,7 @@ const SettingsPage = () => {
               <Button
                 variant="outline"
                 className="w-full justify-start text-destructive border-destructive/50 hover:bg-destructive/10"
+                onClick={() => setDeleteAccountModalOpen(true)}
               >
                 <Trash2 className="w-4 h-4 mr-2" />
                 Supprimer mon compte
@@ -173,6 +202,33 @@ const SettingsPage = () => {
           </div>
         </div>
       </div>
+
+      {/* Change Password Modal */}
+      <ChangePasswordModal
+        open={passwordModalOpen}
+        onOpenChange={setPasswordModalOpen}
+      />
+
+      {/* Logout All Modal */}
+      <ConfirmActionModal
+        open={logoutAllModalOpen}
+        onOpenChange={setLogoutAllModalOpen}
+        title="Se déconnecter de tous les appareils"
+        description="Vous serez déconnecté de tous vos appareils, y compris celui-ci. Vous devrez vous reconnecter."
+        confirmLabel="Se déconnecter"
+        onConfirm={handleLogoutAll}
+      />
+
+      {/* Delete Account Modal */}
+      <ConfirmActionModal
+        open={deleteAccountModalOpen}
+        onOpenChange={setDeleteAccountModalOpen}
+        title="Supprimer mon compte"
+        description="Cette action est irréversible. Toutes vos données, réservations et historique seront définitivement supprimés."
+        confirmLabel="Supprimer définitivement"
+        variant="destructive"
+        onConfirm={handleDeleteAccount}
+      />
     </Layout>
   );
 };

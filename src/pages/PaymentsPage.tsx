@@ -1,6 +1,9 @@
+import { useState } from "react";
 import Layout from "@/components/layout/Layout";
 import { CreditCard, Receipt, Download, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import AddPaymentMethodModal from "@/components/modals/AddPaymentMethodModal";
+import { useToast } from "@/hooks/use-toast";
 
 const mockPayments = [
   {
@@ -30,7 +33,16 @@ const mockPayments = [
 ];
 
 const PaymentsPage = () => {
+  const { toast } = useToast();
+  const [addPaymentOpen, setAddPaymentOpen] = useState(false);
   const totalSpent = mockPayments.reduce((sum, p) => sum + p.amount, 0);
+
+  const handleDownloadReceipt = (paymentId: string) => {
+    toast({
+      title: "Téléchargement",
+      description: `Le reçu ${paymentId} a été téléchargé.`,
+    });
+  };
 
   return (
     <Layout>
@@ -99,7 +111,12 @@ const PaymentsPage = () => {
                   <p className="font-semibold text-foreground">
                     {payment.amount} €
                   </p>
-                  <Button variant="ghost" size="icon" className="text-primary">
+                  <Button 
+                    variant="ghost" 
+                    size="icon" 
+                    className="text-primary"
+                    onClick={() => handleDownloadReceipt(payment.id)}
+                  >
                     <Download className="w-4 h-4" />
                   </Button>
                 </div>
@@ -140,12 +157,22 @@ const PaymentsPage = () => {
                 </div>
               </div>
             </div>
-            <Button variant="outline" className="w-full mt-4">
+            <Button 
+              variant="outline" 
+              className="w-full mt-4"
+              onClick={() => setAddPaymentOpen(true)}
+            >
               + Ajouter un moyen de paiement
             </Button>
           </div>
         </div>
       </div>
+
+      {/* Add Payment Method Modal */}
+      <AddPaymentMethodModal
+        open={addPaymentOpen}
+        onOpenChange={setAddPaymentOpen}
+      />
     </Layout>
   );
 };
