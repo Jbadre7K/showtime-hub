@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Film, Menu, X, User, LogIn } from "lucide-react";
+import { Film, Menu, X, LogIn } from "lucide-react";
+import ProfileButton from "./ProfileButton";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -49,18 +50,8 @@ const Header = () => {
 
           {/* Desktop Auth Buttons */}
           <div className="hidden md:flex items-center gap-3">
-            <Link to="/login">
-              <Button variant="cinema-outline" size="sm">
-                <LogIn className="w-4 h-4" />
-                Connexion
-              </Button>
-            </Link>
-            <Link to="/register">
-              <Button variant="cinema" size="sm">
-                <User className="w-4 h-4" />
-                S'inscrire
-              </Button>
-            </Link>
+            {/* Show ProfileButton if logged in, otherwise show login/register */}
+            <ProfileButton />
           </div>
 
           {/* Mobile Menu Button */}
@@ -92,19 +83,8 @@ const Header = () => {
                   </Button>
                 </Link>
               ))}
-              <div className="flex gap-2 mt-4 pt-4 border-t border-border/50">
-                <Link to="/login" className="flex-1" onClick={() => setIsMenuOpen(false)}>
-                  <Button variant="cinema-outline" className="w-full">
-                    <LogIn className="w-4 h-4" />
-                    Connexion
-                  </Button>
-                </Link>
-                <Link to="/register" className="flex-1" onClick={() => setIsMenuOpen(false)}>
-                  <Button variant="cinema" className="w-full">
-                    <User className="w-4 h-4" />
-                    S'inscrire
-                  </Button>
-                </Link>
+              <div className="flex items-center justify-center mt-4 pt-4 border-t border-border/50">
+                <ProfileButton />
               </div>
             </nav>
           </div>
