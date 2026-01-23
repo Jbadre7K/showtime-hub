@@ -10,6 +10,10 @@ import ShowtimesPage from "./pages/ShowtimesPage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import BookingPage from "./pages/BookingPage";
+import ProfilePage from "./pages/ProfilePage";
+import ReservationsPage from "./pages/ReservationsPage";
+import PaymentsPage from "./pages/PaymentsPage";
+import SettingsPage from "./pages/SettingsPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -28,6 +32,10 @@ const App = () => (
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/booking/:showtimeId" element={<BookingPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/reservations" element={<ReservationsPage />} />
+          <Route path="/payments" element={<PaymentsPage />} />
+          <Route path="/settings" element={<SettingsPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
