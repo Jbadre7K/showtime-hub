@@ -1,6 +1,8 @@
+import { useState } from "react";
 import Layout from "@/components/layout/Layout";
 import { Ticket, Calendar, Clock, MapPin, QrCode } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import TicketModal from "@/components/modals/TicketModal";
 
 const mockReservations = [
   {
@@ -38,17 +40,27 @@ const mockReservations = [
   },
 ];
 
+type Reservation = (typeof mockReservations)[0];
+
 const ReservationsPage = () => {
+  const [selectedReservation, setSelectedReservation] = useState<Reservation | null>(null);
+  const [ticketModalOpen, setTicketModalOpen] = useState(false);
+
   const upcomingReservations = mockReservations.filter(
     (r) => r.status === "confirmed"
   );
   const pastReservations = mockReservations.filter((r) => r.status === "past");
 
+  const handleViewTicket = (reservation: Reservation) => {
+    setSelectedReservation(reservation);
+    setTicketModalOpen(true);
+  };
+
   const ReservationCard = ({
     reservation,
     isPast = false,
   }: {
-    reservation: (typeof mockReservations)[0];
+    reservation: Reservation;
     isPast?: boolean;
   }) => (
     <div
@@ -110,7 +122,12 @@ const ReservationsPage = () => {
           <div className="mt-4 flex items-center justify-between">
             <p className="font-semibold text-primary">{reservation.total} €</p>
             {!isPast && (
-              <Button variant="outline" size="sm" className="gap-2">
+              <Button 
+                variant="outline" 
+                size="sm" 
+                className="gap-2"
+                onClick={() => handleViewTicket(reservation)}
+              >
                 <QrCode className="w-4 h-4" />
                 Voir le billet
               </Button>
@@ -184,6 +201,13 @@ const ReservationsPage = () => {
           </div>
         </div>
       </div>
+
+      {/* Ticket Modal */}
+      <TicketModal
+        reservation={selectedReservation}
+        open={ticketModalOpen}
+        onOpenChange={setTicketModalOpen}
+      />
     </Layout>
   );
 };
