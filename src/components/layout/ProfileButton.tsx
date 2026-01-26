@@ -1,4 +1,4 @@
-import { User, Settings, Ticket, LogOut, CreditCard } from "lucide-react";
+import { User, Settings, Ticket, LogOut, CreditCard, Gift } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import {
@@ -6,6 +6,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import LoyaltyBadge from "@/components/loyalty/LoyaltyBadge";
 
 interface ProfileButtonProps {
   user?: {
@@ -34,6 +35,7 @@ const ProfileButton = ({ user }: ProfileButtonProps) => {
   const menuItems = [
     { icon: User, label: "Mon profil", href: "/profile" },
     { icon: Ticket, label: "Mes réservations", href: "/reservations" },
+    { icon: Gift, label: "Programme fidélité", href: "/loyalty" },
     { icon: CreditCard, label: "Paiements", href: "/payments" },
     { icon: Settings, label: "Paramètres", href: "/settings" },
   ];
@@ -94,6 +96,10 @@ const ProfileButton = ({ user }: ProfileButtonProps) => {
                 {roleLabels[mockUser.role]}
               </span>
             </div>
+          </div>
+          {/* Loyalty Badge */}
+          <div className="mt-3">
+            <LoyaltyBadge points={1250} level="Or" />
           </div>
         </div>
 
