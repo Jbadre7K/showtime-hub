@@ -6,89 +6,89 @@
 
 @layer base {
   :root {
-    /* Cinema dark theme - elegant & luxurious */
-    --background: 222 47% 6%;
-    --foreground: 40 33% 95%;
+    /* Cinema Red Theme - Classic & Dramatic */
+    --background: 0 20% 5%;
+    --foreground: 0 10% 95%;
 
-    --card: 222 47% 8%;
-    --card-foreground: 40 33% 95%;
+    --card: 0 25% 8%;
+    --card-foreground: 0 10% 95%;
 
-    --popover: 222 47% 10%;
-    --popover-foreground: 40 33% 95%;
+    --popover: 0 25% 10%;
+    --popover-foreground: 0 10% 95%;
 
-    /* Gold accent - premium cinema feel */
-    --primary: 38 92% 50%;
-    --primary-foreground: 222 47% 6%;
+    /* Deep red accent - classic cinema */
+    --primary: 0 72% 50%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 222 30% 15%;
-    --secondary-foreground: 40 33% 90%;
+    --secondary: 0 20% 15%;
+    --secondary-foreground: 0 10% 90%;
 
-    --muted: 222 30% 12%;
-    --muted-foreground: 220 15% 55%;
+    --muted: 0 15% 12%;
+    --muted-foreground: 0 10% 55%;
 
-    /* Subtle gold accent */
-    --accent: 38 70% 40%;
-    --accent-foreground: 40 33% 95%;
+    /* Gold accent for premium feel */
+    --accent: 38 80% 50%;
+    --accent-foreground: 0 20% 5%;
 
-    /* Cinema red for CTAs */
-    --destructive: 0 72% 51%;
+    /* Bright red for CTAs */
+    --destructive: 0 85% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 222 30% 18%;
-    --input: 222 30% 15%;
-    --ring: 38 92% 50%;
+    --border: 0 20% 18%;
+    --input: 0 20% 15%;
+    --ring: 0 72% 50%;
 
     --radius: 0.75rem;
 
     /* Custom cinema colors */
-    --cinema-gold: 38 92% 50%;
-    --cinema-gold-light: 40 85% 60%;
-    --cinema-red: 0 72% 51%;
-    --cinema-dark: 222 47% 4%;
-    --cinema-surface: 222 47% 8%;
-    --cinema-surface-hover: 222 40% 12%;
+    --cinema-gold: 38 80% 50%;
+    --cinema-gold-light: 40 75% 60%;
+    --cinema-red: 0 72% 50%;
+    --cinema-dark: 0 20% 4%;
+    --cinema-surface: 0 25% 8%;
+    --cinema-surface-hover: 0 20% 12%;
 
     /* Gradients */
-    --gradient-gold: linear-gradient(135deg, hsl(38 92% 50%), hsl(28 80% 45%));
-    --gradient-dark: linear-gradient(180deg, hsl(222 47% 8%), hsl(222 47% 4%));
-    --gradient-hero: linear-gradient(180deg, transparent 0%, hsl(222 47% 6% / 0.8) 50%, hsl(222 47% 6%) 100%);
-    --gradient-card: linear-gradient(145deg, hsl(222 47% 10%), hsl(222 47% 6%));
+    --gradient-gold: linear-gradient(135deg, hsl(0 72% 50%), hsl(0 60% 40%));
+    --gradient-dark: linear-gradient(180deg, hsl(0 25% 8%), hsl(0 20% 4%));
+    --gradient-hero: linear-gradient(180deg, transparent 0%, hsl(0 20% 5% / 0.8) 50%, hsl(0 20% 5%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(0 25% 10%), hsl(0 20% 6%));
 
     /* Shadows */
-    --shadow-gold: 0 4px 20px -4px hsl(38 92% 50% / 0.3);
+    --shadow-gold: 0 4px 20px -4px hsl(0 72% 50% / 0.4);
     --shadow-card: 0 8px 32px -8px hsl(0 0% 0% / 0.5);
     --shadow-hover: 0 12px 40px -8px hsl(0 0% 0% / 0.6);
 
-    --sidebar-background: 222 47% 6%;
-    --sidebar-foreground: 40 33% 90%;
-    --sidebar-primary: 38 92% 50%;
-    --sidebar-primary-foreground: 222 47% 6%;
-    --sidebar-accent: 222 30% 12%;
-    --sidebar-accent-foreground: 40 33% 90%;
-    --sidebar-border: 222 30% 15%;
-    --sidebar-ring: 38 92% 50%;
+    --sidebar-background: 0 20% 6%;
+    --sidebar-foreground: 0 10% 90%;
+    --sidebar-primary: 0 72% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 20% 12%;
+    --sidebar-accent-foreground: 0 10% 90%;
+    --sidebar-border: 0 20% 15%;
+    --sidebar-ring: 0 72% 50%;
   }
 
   .dark {
-    --background: 222 47% 6%;
-    --foreground: 40 33% 95%;
-    --card: 222 47% 8%;
-    --card-foreground: 40 33% 95%;
-    --popover: 222 47% 10%;
-    --popover-foreground: 40 33% 95%;
-    --primary: 38 92% 50%;
-    --primary-foreground: 222 47% 6%;
-    --secondary: 222 30% 15%;
-    --secondary-foreground: 40 33% 90%;
-    --muted: 222 30% 12%;
-    --muted-foreground: 220 15% 55%;
-    --accent: 38 70% 40%;
-    --accent-foreground: 40 33% 95%;
-    --destructive: 0 72% 51%;
+    --background: 0 20% 5%;
+    --foreground: 0 10% 95%;
+    --card: 0 25% 8%;
+    --card-foreground: 0 10% 95%;
+    --popover: 0 25% 10%;
+    --popover-foreground: 0 10% 95%;
+    --primary: 0 72% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 20% 15%;
+    --secondary-foreground: 0 10% 90%;
+    --muted: 0 15% 12%;
+    --muted-foreground: 0 10% 55%;
+    --accent: 38 80% 50%;
+    --accent-foreground: 0 20% 5%;
+    --destructive: 0 85% 60%;
     --destructive-foreground: 0 0% 100%;
-    --border: 222 30% 18%;
-    --input: 222 30% 15%;
-    --ring: 38 92% 50%;
+    --border: 0 20% 18%;
+    --input: 0 20% 15%;
+    --ring: 0 72% 50%;
   }
 }
 
