@@ -85,8 +85,8 @@ export default {
           to: { height: "0" },
         },
         "pulse-gold": {
-          "0%, 100%": { boxShadow: "0 0 0 0 hsl(38 92% 50% / 0.4)" },
-          "50%": { boxShadow: "0 0 0 8px hsl(38 92% 50% / 0)" },
+          "0%, 100%": { boxShadow: "0 0 0 0 hsl(0 72% 50% / 0.4)" },
+          "50%": { boxShadow: "0 0 0 8px hsl(0 72% 50% / 0)" },
         },
         shimmer: {
           "0%": { backgroundPosition: "-200% 0" },
@@ -100,7 +100,7 @@ export default {
         shimmer: "shimmer 2s infinite linear",
       },
       backgroundImage: {
-        "shimmer-gradient": "linear-gradient(90deg, transparent, hsl(38 92% 50% / 0.1), transparent)",
+        "shimmer-gradient": "linear-gradient(90deg, transparent, hsl(0 72% 50% / 0.1), transparent)",
       },
     },
   },
